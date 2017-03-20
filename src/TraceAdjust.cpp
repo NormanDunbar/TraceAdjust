@@ -30,6 +30,9 @@
 
 int main(int argc, char *argv[])
 {
+    // Sign on.
+    cerr << "TraceAdjust v" << version << endl << endl;
+
     // We need a single parameter, the trace file name.
     if (argc < 2) {
         cerr << "TraceAdjust: No arguments supplied. Cannot continue." << endl;
@@ -103,7 +106,8 @@ int main(int argc, char *argv[])
                 baseTimestamp = makeTimePoint(year, month, day, hour, minute, second);
 
                 cout << traceLine << endl;
-                cout << "*** TraceAdjust: Base Timestamp Adjusted to '" << asString(baseTimestamp) << '\'' << endl;
+                cout << "*** TraceAdjust v" << version
+                     << ": Base Timestamp Adjusted to '" << asString(baseTimestamp) << '\'' << endl;
 
                 // Reset the running delta. This is the deltas since the last timestamp correction.
                 runningDelta = 0;

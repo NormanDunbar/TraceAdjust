@@ -25,6 +25,9 @@
  * SOFTWARE.
  */
 
+// Change this as releases go out!
+#define version "0.10"
+
 #include <iostream>
 #include <fstream>
 #include <string>
