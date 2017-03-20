@@ -27,3 +27,28 @@
 *.exe
 *.out
 *.app
+
+# CodeBlocks and Borland Compiler stuff
+*.ilc
+*.ild
+*.ilf
+*.ils
+*.map
+*.tds
+*.save
+*.depend
+*.layout
+
+# DoxyGen output.
+TraceMiner2/doxygen/
+
+# Gnu G++ Stuff.
+bin/*
+
+#Other non-essential stuff.
+*.pdf
+*.css
+
+#Except the README.pdf
+!README.pdf
+
