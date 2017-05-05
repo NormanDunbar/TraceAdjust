@@ -90,7 +90,7 @@ Hopefully, the additional fields make your trace file browsing experience a litt
 - If a line with "tim=" in it is found, then:
 
     - The value for tim is extracted. (uSecs)
-    - The value is subtracted from the previous value to get the current delta. (uSecs)
+    - The previous tim value is subtracted from the extracted tim value to get the current delta. (uSecs)
     - The new tim value is moved into the previous tim value.
     - The current delta is added to the running delta. (uSecs)
     - The base timestamp plus the running delta is converted to a local date time string. This adds only down to 'seconds' precision.
