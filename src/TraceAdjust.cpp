@@ -139,7 +139,12 @@ int main(int argc, char *argv[])
             continue;
         }
 
-        // Found a tim. Extract the value and subtract the previous tim value
+        // Found a tim. f we are in a PARSING IN CURSOR, we need the 
+        // stuff after the tim field as well. Normally, this is HV=...
+        // If we don;t find it, we don't care as it works out fine!
+        string::size_type hvPos = traceLine.find(" hv=");
+
+        // Extract the value and subtract the previous tim value
         // from that to get a delta - which is in microseconds. And might be negative.
         bool timOk = true;
         try {
@@ -204,8 +209,15 @@ int main(int argc, char *argv[])
         // dslt = running delta in uSecs since last timestamp.
         // local = 'yyyy Mon dd hh24:mi:ss.ffffff'
         cout << traceLine.substr(0, timPos + 4)
-             << seconds
-             << ",delta=" << deltaTim
+             << seconds;
+
+        if (hvPos != string::npos) {
+            // We have stuff after the tim=value. Write it.
+            cout << traceLine.substr(hvPos, string::npos);
+        }
+
+        // Now the new stuff.
+        cout << ",delta=" << deltaTim
              << ",dslt=" << runningDelta
              << ",local='" << timeStamp << '\'' << endl;
 
